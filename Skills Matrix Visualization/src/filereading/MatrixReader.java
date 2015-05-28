@@ -9,5 +9,4 @@ package filereading;
  * @author ros_aljacobson001
  */
 public class MatrixReader {
-    
 }
