@@ -14,7 +14,7 @@ public class Snapshot {
     private ArrayList<Skill> skills;
 
     /**
-     *
+     * The constructor which sets the date and skills of the snapshot
      * @param date The date that the information for the snapshot was gathered
      * @param skills The information about the skills that were gathered
      * @author Aaron Jacobson
