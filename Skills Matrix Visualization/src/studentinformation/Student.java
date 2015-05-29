@@ -5,7 +5,7 @@ import java.util.Date;
 
 /**
  *
- * @author ros_aljacobson001
+ * @author Aaron Jacobson
  */
 public class Student{
     
@@ -39,6 +39,25 @@ public class Student{
         this.buildSeasons = buildSeasons;
         this.snapshots = snapshots;
         this.accomplishments = accomplishments;
+    }
+    
+    public Snapshot getMostRecentSnapshot(){
+        Snapshot recent = snapshots.get(0);
+        for(Snapshot s : snapshots){
+            if(s.getDate().compareTo(recent.getDate()) > 0){
+                recent = s;
+            }
+        }
+        return recent;
+    }
+    
+    public Snapshot getSnapshot(Date date){
+        for(Snapshot s : snapshots){
+            if(s.getDate().equals(date)){
+                return s;
+            }
+        }
+        return null;
     }
     
     public String getFirstName(){

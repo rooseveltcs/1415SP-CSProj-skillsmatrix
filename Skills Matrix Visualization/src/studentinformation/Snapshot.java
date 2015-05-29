@@ -33,7 +33,7 @@ public class Snapshot {
     public void setDate(Date date){
         this.date = date;
     }
-    
+     
     /**
      * Sets the skills to an entirely new ArrayList
      * @param skills The ArrayList with all the skills
