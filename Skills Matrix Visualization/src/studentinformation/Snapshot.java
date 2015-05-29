@@ -62,4 +62,22 @@ public class Snapshot {
     public ArrayList<Skill> getSkills(){
         return this.skills;
     }
+    
+    /**
+     * Returns the skill with the given name, if there are multiple with the same
+     * name it will just give the first one, if there is no skill with the given
+     * name it will return null
+     * @param skillName The name of the skill to find
+     * @return The skill with the given name, if there isn't a skill with the given
+     * name it will return null
+     * @author Aaron Jacobson
+     */
+    public Skill getSkill(String skillName){
+        for(Skill s : skills){
+            if(s.getName().equals(skillName)){
+                return s;
+            }
+        }
+        return null;
+    }
 }
