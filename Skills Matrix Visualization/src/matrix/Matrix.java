@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 import studentinformation.Accomplishment;
+import studentinformation.Skill;
 import studentinformation.Snapshot;
 import studentinformation.Student;
 
@@ -36,12 +37,39 @@ public class Matrix {
      * WIP will read the file and use the information to construct the matrix
      * @author Aaron Jacobson
      */
-    public void readFromFie() {
+    public void initializeFileScanner() {
         try {
             Scanner fileScanner = new Scanner(this.matrixFile);
         } catch (FileNotFoundException ex) {
             System.out.println("Matrix: You gave me a file which doesn't exist!");
         }
+    }
+    
+    public String[] getColumnNames(){
+        ArrayList columnNamesList = new ArrayList<>();
+        for(String s : getSkillNames()){
+            columnNamesList.add(s+ " Skill Level");
+            columnNamesList.add(s+ " Interest Level");
+        }
+        return (String[]) columnNamesList.toArray();
+    }
+    
+    public ArrayList<String> getSkillNames(){
+        ArrayList<String> skillNames = new ArrayList<>();
+        for(Student s : students){
+            for(Snapshot sn : s.getSnapshots()){
+                for(Skill sk : sn.getSkills()){
+                    if(!skillNames.contains(sk.getName())){
+                        skillNames.add(sk.getName());
+                    }
+                }
+            }
+        }
+        return skillNames;
+    }
+    
+    private void readFile(Scanner fileScanner){
+        
     }
 
     /**
