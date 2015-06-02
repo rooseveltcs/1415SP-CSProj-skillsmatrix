@@ -69,6 +69,7 @@ public class Matrix {
     }
     
     private void readFile(Scanner fileScanner){
+        ArrayList<String> categories = new ArrayList<>();
         
     }
 
