@@ -16,10 +16,16 @@ import studentinformation.Student;
  */
 public class Matrix {
 
+    public static final String DEMOGRAPHICS_TAG = "DEMOGRAPHICS";
+    public static final String SKILLS_TAG = "SKILLS";
+    public static final String STUDENTS_TAG = "STUDENTS";
+    
     private File matrixFile;
     private ArrayList<Student> students;
     private ArrayList<Date> dates;
     private Date currentDate;
+    private ArrayList<String> categories;
+    private ArrayList<String> skillNames;
 
     /**
      * The constructor which initializes the class fields
@@ -40,6 +46,7 @@ public class Matrix {
     public void initializeFileScanner() {
         try {
             Scanner fileScanner = new Scanner(this.matrixFile);
+            readFile(fileScanner);
         } catch (FileNotFoundException ex) {
             System.out.println("Matrix: You gave me a file which doesn't exist!");
         }
@@ -54,6 +61,9 @@ public class Matrix {
         return (String[]) columnNamesList.toArray();
     }
     
+    public ArrayList<Student> getStudents(){
+        return this.students;
+    }
     public ArrayList<String> getSkillNames(){
         ArrayList<String> skillNames = new ArrayList<>();
         for(Student s : students){
@@ -69,8 +79,55 @@ public class Matrix {
     }
     
     private void readFile(Scanner fileScanner){
-        ArrayList<String> categories = new ArrayList<>();
-        
+        categories = new ArrayList<>();
+        boolean onDemographics = false;
+        boolean onSkills = false;
+        boolean onStudents = false;
+        if(fileScanner.hasNext()){
+            String next = fileScanner.next();
+            if(onDemographics){
+                categories.add(next);
+            }else if(onSkills){
+                categories.add(next);
+                if(next.endsWith("Skill")){
+                    skillNames.add(next);
+                }else if(next.endsWith("Interest")){
+                    
+                }
+            }else if(onStudents){
+                String firstName = fileScanner.next();
+                String lastName = fileScanner.next();
+                String race = fileScanner.next();
+                boolean isMale = fileScanner.nextBoolean();
+                int gradeLevel = fileScanner.nextInt();
+                int numBuildSeasons = fileScanner.nextInt();
+                int favoritePokemonNumber = fileScanner.nextInt();
+                ArrayList<Skill> skills = new ArrayList<>();
+                for(int currentSkill = 0;currentSkill<skillNames.size();currentSkill++){
+                    skills.add(new Skill(skillNames.get(currentSkill),fileScanner.nextInt(),fileScanner.nextInt()));
+                }
+                Snapshot snapshot = new Snapshot(new Date(),skills);
+                ArrayList<Snapshot> snapshots = new ArrayList<>();
+                snapshots.add(snapshot);
+                ArrayList<Accomplishment> accomplishments = new ArrayList<>();
+                Student student = new Student(firstName,lastName,race,isMale,gradeLevel,numBuildSeasons,snapshots,accomplishments,favoritePokemonNumber);
+                students.add(student);
+            }else{
+                if(next.equals(DEMOGRAPHICS_TAG)){
+                    onDemographics = true;
+                    onSkills = false;
+                    onStudents = false;
+                }else if(next.equals(SKILLS_TAG)){
+                    onSkills = true;
+                    onDemographics = false;
+                    onStudents = false;
+                }else if(next.equals(STUDENTS_TAG)){
+                    onStudents = true;
+                    onDemographics = false;
+                    onSkills = false;
+                }
+            }
+        }
     }
 
     /**
