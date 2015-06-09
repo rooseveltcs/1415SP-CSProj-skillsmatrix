@@ -1,0 +1,45 @@
+DEMOGRAPHICS 
+First_Name	Last_Name	Race	Gender	Grade_Level	#_of_Build_Seasons	Favorite_Pokemon_Number
+SKILLS
+CAD_Modeling_Skill	CAD_Modeling_Interest	Design_Skill	Design_Interest	Fabrication_Skill	Fabrication Interest	Aesthetics_Skill	Aesthetics Interest	Electronics_Skill	Electronics Interest	Programming_Skill	Programming_Interest	Strategy_+_Scouting Skill	Strategy_+_Scouting Interest	Sensors_Skill	Sensors_Interest	Pneumatic_Systems_Skill	Pneumatic_Systems_Interest	Project_Management_Skill	Project_Management_Interest
+STUDENTS
+Jason		Dan			Human	M	11	123 2	2	2	1	1	3	4	4	1	1	5	1	1	2	3	1	3	1	3	4	2
+Matthew 	Robinaugh 	Human	M	9	123 1	3	5	3	5	2	5	2	2	1	3	2	3	2	5	2	2	1	4	1	1
+Dylan		LaMarca		Human	M	10	123 1	1	1	1	4	2	3	1	1	1	5	4	5	1	2	1	2	1	3	2	3
+Alarik		Rask		Human	M	9	123 1	3	3	2	2	3	4	3	5	2	3	1	1	4	4	1	3	2	3	1	1
+Halle		Remash		Human	F	11	123 2	1	1	3	4	1	2	4	4	1	2	4	5	4	3	2	2	1	1	3	2
+Olin		Sorby		Human	M	9	123 1	3	3	4	1	3	5	1	1	3	5	1	3	5	5	1	1	3	4	1	1
+Alexander 	Clark		Human	M	11	123 2	1	1	2	3	3	5	3	4	3	5	2	1	3	2	1	1	1	5	1	1
+Christina 	Doty		Human	F	11	123 3	5	5	5	5	5	5	5	4	1	1	1	1	4	2	1	1	1	2	1	1
+Jacob		Olsen		Human	M	11	123 3	2	3	5	5	5	5	4	4	2	2	1	2	2	2	2	2	1	2	1	2
+Nate		Spencer		Human	M	11	123 2	2	1	1	2	2	3	2	4	1	4	3	4	3	2	1	3	1	3	2	4
+Jake		Torrey		Human	M	10	123 2	3	3	5	5	5	5	2	2	2	4	1	4	4	4	1	1	1	4	1	1
+Kendall		Farra		Human	M	11	123 2   3	2	4	4	3	3	3	2	3	1	1	1	3	2	2	1	2	1	2	1
+Zoe			Lawrence 	Human	F	11	123 3	2	1	2	1	1	1	1	1	1	1	5	5	2	5	1	1	1	1	1	2
+Christiana	Tebbs		Human	F	11	123 2	2	3	2	4	1	3	4	5	2	4	3	2	2	2	1	1	2	4	1	1
+McLean		Thompson	Human	M	9	123 1	1	2	2	3	2	5	3	4	2	5	1	2	1	3	1	3	3	5	3	5
+Carlie		Dorr		Human	F	11	123 1	1	1	2	3	2	4	3	4	1	1	1	1	1	3	1	1	1	1	2	3
+Nathaniel	Warner		Human	M	12	123 1	2	4	2	2	2	2	1	2	3	3	4	3	2	2	1	3	1	2	1	1
+Kelsey		Boze		Human	F	9	123 1	1	1	2	3	2	5	3	3	3	3	1	1	2	1	1	1	2	5	2	3
+Kevin		Wilson		Human	M	9	123 1	3	2	3	3	3	4	4	2	4	3	3	1	2	4	1	1	2	4	3	4
+Cally		Nicholls	Human	F	10	123 1	2	1	2	3	2	4	1	1	1	3	2	1	3	4	1	1	1	3	3	5
+Alex		Rickert		Human	M	11	123 3	4	2	5	4	5	5	2	1	4	5	2	1	5	5	2	3	2	4	2	1
+Jaron		Scofield	Human	M	9	123 1	1	3	2	1	1	1	1	2	1	3	2	5	1	3	1	4	1	1	2	3
+Fiona		Shaffer		Human	F	9	123 1	1	2	1	2	1	2	1	3	1	4	2	5	1	2	1	3	1	1	1	1
+Julia		Bailey		Human	F	9	123 1	1	2	1	2	1	3	1	3	1	4	1	3	1	4	1	3	1	1	1	2
+Andrew		Neel		Human	M	9	123 1	1	1	1	1	1	1	1	2	1	1	2	5	1	4	1	1	1	1	1	2
+Tabea		Frese		Human	F	9	123 1	1	2	1	3	1	1	1	1	1	2	4	5	1	2	1	2	1	2	2	3
+Ravi		Spigner		Human	M	10	123 1	1	2	1	3	1	1	1	1	3	4	3	5	2	2	2	3	1	3	2	1
+Manjari		Anant		Human	F	10	123 1	1	4	1	2	1	3	2	1	1	4	2	4	1	2	1	4	1	3	1	1
+Simon		Rockhold	Human	M	11	123 3	3	3	5	5	4	3	3	3	4	3	2	3	2	3	3	5	4	5	1	1
+Karina		Cooper		Human	F	11	123 3	2	3	2	2	1	1	2	1	1	1	4	5	4	4	1	1	1	1	3	5
+Marli		Remash		Human	F	11	123 2	2	2	3	3	1	1	2	3	2	3	4	4	3	4	2	2	1	1	2	2
+Patrick		McGreevy	Human	M	10	123 2	2	2	1	1	4	4	2	2	3	4	1	1	3	3	2	3	2	4	1	2
+Thomas		Noble		Human	M	12	123 2	1	2	2	3	1	3	2	1	1	3	4	5	4	5	1	2	1	2	3	4
+Jax			Damir		Human	M	11	123 3	3	2	4	3	4	5	3	1	4	5	1	2	2	1	3	2	5	5	3	3
+Rebecca		Nicacio		Human	F	11	123 2	1	1	1	2	1	1	1	2	1	2	3	5	3	4	1	1	1	1	1	1
+Finnegan	Carroll		Human	M	11	123 3	2	2	2	2	3	4	2	2	3	3	4	5	3	3	1	3	1	2	1	1
+Ryan		Henrie		Human	M	11	123 1	1	2	1	2	1	3	1	4	1	2	1	1	1	2	1	3	1	2	1	1
+Ben			Freeland	Human	M	11	123 1	4	5	4	5	3	4	1	2	1	3	1	1	1	2	1	1	1	4	3	3
+Cody		Conley		Human	M	10	123 1	1	3	3	4	5	5	4	4	3	4	1	1	2	1	3	2	2	4	3	1
+Joel		Mugozi		Human	M	12	123 0	1	4	3	4	5	4	4	4	1	3	1	5	1	4	1	3	1	4	2	5
