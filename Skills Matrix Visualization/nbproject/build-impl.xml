@@ -990,7 +990,7 @@ is divided into following sections:
         </manifest>
     </target>
     <target depends="init,-init-macrodef-copylibs,compile,-pre-pre-jar,-pre-jar,-do-jar-create-manifest,-do-jar-copy-manifest,-do-jar-set-mainclass,-do-jar-set-profile,-do-jar-set-splashscreen" if="do.mkdist" name="-do-jar-copylibs">
-        <j2seproject3:copylibs manifest="${tmp.manifest.file}"/>
+
         <echo level="info">To run this application from the command line without Ant, try:</echo>
         <property location="${dist.jar}" name="dist.jar.resolved"/>
         <echo level="info">java -jar "${dist.jar.resolved}"</echo>

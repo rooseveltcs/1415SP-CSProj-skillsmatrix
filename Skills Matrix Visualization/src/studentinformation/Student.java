@@ -12,7 +12,7 @@ public class Student{
     private String firstName;
     private String lastName;
     private String race;
-    private boolean isMale;
+    private String sex;
     private int grade;
     private int buildSeasons;
     private ArrayList<Snapshot> snapshots;
@@ -24,7 +24,7 @@ public class Student{
      * @param firstName the first name of the Student
      * @param lastName the last name of the Student
      * @param race the race of the Student
-     * @param isMale if true the student is male if not they are female
+     * @param sex the sex of the student
      * @param grade what grade the student is in
      * @param buildSeasons the number of build seasons that the student has participated in
      * @param snapshots The snapshots of the Student's skills
@@ -33,11 +33,11 @@ public class Student{
      * 
      * @author ros_haremash, Aaron Jacobson
      */
-    public Student(String firstName, String lastName, String race, boolean isMale, int grade, int buildSeasons,ArrayList<Snapshot> snapshots,ArrayList<Accomplishment> accomplishments,int favoritePokemonNumber){
+    public Student(String firstName, String lastName, String race, String sex, int grade, int buildSeasons,ArrayList<Snapshot> snapshots,ArrayList<Accomplishment> accomplishments,int favoritePokemonNumber){
         this.firstName = firstName;
         this.lastName = lastName;
         this.race = race;
-        this.isMale = isMale;
+        this.sex = sex;
         this.grade = grade;
         this.buildSeasons = buildSeasons;
         this.snapshots = snapshots;
@@ -101,8 +101,8 @@ public class Student{
      * @return Will return true if the Student is male, false if not
      * @author Aaron Jacobson
      */
-    public boolean getIsMale(){
-        return this.isMale;
+    public String getSex(){
+        return this.sex;
     }
     
     /**

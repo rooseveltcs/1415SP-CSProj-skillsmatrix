@@ -19,7 +19,6 @@ public class Matrix {
     public static final String DEMOGRAPHICS_TAG = "DEMOGRAPHICS";
     public static final String SKILLS_TAG = "SKILLS";
     public static final String STUDENTS_TAG = "STUDENTS";
-    
     private File matrixFile;
     private ArrayList<Student> students;
     private ArrayList<Date> dates;
@@ -29,47 +28,52 @@ public class Matrix {
 
     /**
      * The constructor which initializes the class fields
-     * @param matrixFile The File that the matrix is in, as of writing this method
-     * there is no file reading
+     *
+     * @param matrixFile The File that the matrix is in, as of writing this
+     * method there is no file reading
      * @author Aaron Jacobson
      */
     public Matrix(File matrixFile) {
         this.matrixFile = matrixFile;
         this.students = new ArrayList<>();
         this.dates = new ArrayList<>();
+        this.skillNames = new ArrayList<>();
     }
 
     /**
      * WIP will read the file and use the information to construct the matrix
+     *
      * @author Aaron Jacobson
      */
     public void initializeFileScanner() {
         try {
             Scanner fileScanner = new Scanner(this.matrixFile);
             readFile(fileScanner);
+            System.out.println("Read the file.");
         } catch (FileNotFoundException ex) {
             System.out.println("Matrix: You gave me a file which doesn't exist!");
         }
     }
-    
-    public String[] getColumnNames(){
+
+    public String[] getColumnNames() {
         ArrayList columnNamesList = new ArrayList<>();
-        for(String s : getSkillNames()){
-            columnNamesList.add(s+ " Skill Level");
-            columnNamesList.add(s+ " Interest Level");
+        for (String s : getSkillNames()) {
+            columnNamesList.add(s + " Skill Level");
+            columnNamesList.add(s + " Interest Level");
         }
         return (String[]) columnNamesList.toArray();
     }
-    
-    public ArrayList<Student> getStudents(){
+
+    public ArrayList<Student> getStudents() {
         return this.students;
     }
-    public ArrayList<String> getSkillNames(){
+
+    public ArrayList<String> getSkillNames() {
         ArrayList<String> skillNames = new ArrayList<>();
-        for(Student s : students){
-            for(Snapshot sn : s.getSnapshots()){
-                for(Skill sk : sn.getSkills()){
-                    if(!skillNames.contains(sk.getName())){
+        for (Student s : students) {
+            for (Snapshot sn : s.getSnapshots()) {
+                for (Skill sk : sn.getSkills()) {
+                    if (!skillNames.contains(sk.getName())) {
                         skillNames.add(sk.getName());
                     }
                 }
@@ -77,61 +81,82 @@ public class Matrix {
         }
         return skillNames;
     }
-    
-    private void readFile(Scanner fileScanner){
+
+    private void readFile(Scanner fileScanner) {
         categories = new ArrayList<>();
         boolean onDemographics = false;
         boolean onSkills = false;
         boolean onStudents = false;
-        if(fileScanner.hasNext()){
+        while (fileScanner.hasNext()) {
             String next = fileScanner.next();
-            if(onDemographics){
+            if (next.equals(DEMOGRAPHICS_TAG)) {
+                System.out.println("Found demographics tag.");
+                onDemographics = true;
+                onSkills = false;
+                onStudents = false;
+            } else if (next.equals(SKILLS_TAG)) {
+                System.out.println("Found the skills tag");
+                onSkills = true;
+                onDemographics = false;
+                onStudents = false;
+            } else if (next.equals(STUDENTS_TAG)) {
+                System.out.println("Found the students tag");
+                onStudents = true;
+                onDemographics = false;
+                onSkills = false;
+            }
+//            System.out.println("Matrix: " + next);
+            if (onDemographics) {
+                System.out.println("Adding new demographic: " + next);
                 categories.add(next);
-            }else if(onSkills){
+            } else if (onSkills) {
                 categories.add(next);
-                if(next.endsWith("Skill")){
+                if (next.endsWith("Skill")) {
+                    System.out.println("Adding new skill : " + next);
                     skillNames.add(next);
-                }else if(next.endsWith("Interest")){
-                    
+                } else if (next.endsWith("Interest")) {
                 }
-            }else if(onStudents){
-                String firstName = fileScanner.next();
+            } else if (onStudents) {
+                String firstName;
+                if(students.size() == 0){
+                    firstName = fileScanner.next();
+                }else{
+                    firstName = next;
+                }
+//                System.out.println("First Name: " + firstName);
                 String lastName = fileScanner.next();
+//                System.out.println("Last Name: " + lastName);
                 String race = fileScanner.next();
-                boolean isMale = fileScanner.nextBoolean();
+//                System.out.println("Race: " + race);
+                String sex = fileScanner.next();
+//                System.out.println("Sex: " + sex);
                 int gradeLevel = fileScanner.nextInt();
-                int numBuildSeasons = fileScanner.nextInt();
+//                System.out.println("Grade Level: " + gradeLevel);
                 int favoritePokemonNumber = fileScanner.nextInt();
+//                System.out.println("Favorite Pokemon Number: " + favoritePokemonNumber);
+                int numBuildSeasons = fileScanner.nextInt();
+//                System.out.println("Number of Build Seasons: " + numBuildSeasons);
                 ArrayList<Skill> skills = new ArrayList<>();
-                for(int currentSkill = 0;currentSkill<skillNames.size();currentSkill++){
-                    skills.add(new Skill(skillNames.get(currentSkill),fileScanner.nextInt(),fileScanner.nextInt()));
+                for (int currentSkill = 0; currentSkill < skillNames.size(); currentSkill++) {
+//                    System.out.println(fileScanner.next() + " " + fileScanner.next());
+                    skills.add(new Skill(skillNames.get(currentSkill), fileScanner.nextInt(), fileScanner.nextInt()));
+//                    System.out.println(skills.get(currentSkill).getName() + " " + skills.get(currentSkill).getLevel() + " " + skills.get(currentSkill).getInterestLevel());
                 }
-                Snapshot snapshot = new Snapshot(new Date(),skills);
+                Snapshot snapshot = new Snapshot(new Date(), skills);
                 ArrayList<Snapshot> snapshots = new ArrayList<>();
                 snapshots.add(snapshot);
                 ArrayList<Accomplishment> accomplishments = new ArrayList<>();
-                Student student = new Student(firstName,lastName,race,isMale,gradeLevel,numBuildSeasons,snapshots,accomplishments,favoritePokemonNumber);
+                Student student = new Student(firstName, lastName, race, sex, gradeLevel, numBuildSeasons, snapshots, accomplishments, favoritePokemonNumber);
                 students.add(student);
-            }else{
-                if(next.equals(DEMOGRAPHICS_TAG)){
-                    onDemographics = true;
-                    onSkills = false;
-                    onStudents = false;
-                }else if(next.equals(SKILLS_TAG)){
-                    onSkills = true;
-                    onDemographics = false;
-                    onStudents = false;
-                }else if(next.equals(STUDENTS_TAG)){
-                    onStudents = true;
-                    onDemographics = false;
-                    onSkills = false;
-                }
             }
         }
+        System.out.println("Nothing left in the file.");
     }
 
     /**
-     * Will organize the Students by skill level in the given skill least to greatest
+     * Will organize the Students by skill level in the given skill least to
+     * greatest
+     *
      * @param skillName The name of the skill to compare the Students by
      * @author Aaron Jacobson
      */
@@ -154,8 +179,9 @@ public class Matrix {
 
     /**
      * Goes through all the snapshots and accomplishments from every student in
-     * the matrix and gathers all the dates that can be found. It shouldn't
-     * add the same date twice.
+     * the matrix and gathers all the dates that can be found. It shouldn't add
+     * the same date twice.
+     *
      * @author Aaron Jacobson
      */
     public void assembleDates() {
@@ -165,8 +191,8 @@ public class Matrix {
                     dates.add(sn.getDate());
                 }
             }
-            for(Accomplishment a : s.getAccomplishments()){
-                if(!dates.contains(a.getDate())){
+            for (Accomplishment a : s.getAccomplishments()) {
+                if (!dates.contains(a.getDate())) {
                     dates.add(a.getDate());
                 }
             }
