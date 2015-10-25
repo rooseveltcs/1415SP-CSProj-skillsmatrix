@@ -25,6 +25,9 @@ public class Matrix {
     private Date currentDate;
     private ArrayList<String> categories;
     private ArrayList<String> skillNames;
+    private boolean onDemographics;
+    private boolean onSkills;
+    private boolean onStudents;
 
     /**
      * The constructor which initializes the class fields
@@ -81,12 +84,50 @@ public class Matrix {
         }
         return skillNames;
     }
+    
+    public void readCSVFile(Scanner fileScanner){
+        categories = new ArrayList<>();
+        onDemographics = false;
+        onSkills = false;
+        onStudents = false;
+        while(fileScanner.hasNext()){
+            String next = fileScanner.next();
+            if(next.startsWith(",")){
+                next = next.substring(1);
+            }else if(next.endsWith(",")){
+                next = next.substring(0, next.length()-2);
+            }else if(next.contains(",")){
+                String[] multipleValues = next.split(",");
+            }else{
+                
+            }
+        }
+    }
+    
+    private void processNextValue(String next){
+        if(next.equals(DEMOGRAPHICS_TAG)){
+            System.out.println("Found the demographics tag.");
+            onDemographics = true;
+            onSkills = false;
+            onStudents = false;
+        }else if(next.equals(SKILLS_TAG)){
+            System.out.println("Found the skills tag.");
+            onDemographics = false;
+            onSkills = true;
+            onStudents = false;
+        }else if(next.equals(STUDENTS_TAG)){
+            System.out.println("Found the students tag.");
+            onDemographics = false;
+            onSkills = false;
+            onStudents = true;
+        }
+    }
 
     private void readFile(Scanner fileScanner) {
         categories = new ArrayList<>();
-        boolean onDemographics = false;
-        boolean onSkills = false;
-        boolean onStudents = false;
+        onDemographics = false;
+        onSkills = false;
+        onStudents = false;
         while (fileScanner.hasNext()) {
             String next = fileScanner.next();
             if (next.equals(DEMOGRAPHICS_TAG)) {
